@@ -1,0 +1,142 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+      "title": "Todo List"
+    },
+    "tags": [
+      {
+        "name": "Todo's",
+        "description": "Enter what you must get done"
+      }
+    ],
+    "paths": {
+      "/todo/list": {
+        "get": {
+          "tags": [
+            "Todo's"
+          ],
+          "summary": "Returns Todo List",
+          "responses": {
+           
+          }
+        }
+      },
+      "/todo" : {
+        "post": {
+          "tags": [
+            "Todo's"
+          ],
+          "summary": "Create a new Todo",
+          "requestBody": {
+            "description": "Todo list description",
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/List"
+                }
+              }
+            }
+          },
+          "produces": [
+            "application/json"
+          ],
+          "responses": {
+            
+          }
+        }
+      },
+      "/todo/{id}": {
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "",
+            "type": "string"
+          }
+        ],
+        "put": {
+            "summary": "Update an existing Todo",
+            "tags": [
+              "Todo's"
+            ],
+            "parameters": [
+              {
+                "in": "path",
+                "name": "id",
+                "required": true,
+                "description": "Todo id",
+                "schema": {
+                  "$ref": "#/components/schemas/id"
+                }
+              }
+            ],
+            "requestBody": {
+              "description": "Todo list description",
+              "required": true,
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/List"
+                  }
+                }
+              }
+            },
+            "produces": [
+              "application/json"
+            ],
+            "responses": {
+              
+            }
+          },
+        "delete": {
+          "summary": "Delete Todo from list",
+          "tags": [
+            "Todo's"
+          ],
+          "parameters": [
+            {
+              "in": "path",
+              "name": "id",
+              "required": true,
+              "description": "Todo id",
+              "schema": {
+                "$ref": "#/components/schemas/id"
+              }
+            }
+          ],
+          "responses": {
+          }
+        }
+      }
+    },
+    "components": {
+      "schemas": {
+        "id": {
+          "properties": {
+            "id": {
+              "type": "string"
+            }
+          }
+        },
+        "List": {
+          "type": "object",
+          "properties": {
+            "Todo": {
+              "type": "string",
+              "format": "string"
+            },
+            "Timestamp": {
+              "type": "string",
+              "format": "date"
+            },
+            "Deadline": {
+                "type": "string",
+                "format": "date"
+              }
+          }
+        }
+      }
+    }
+  }
